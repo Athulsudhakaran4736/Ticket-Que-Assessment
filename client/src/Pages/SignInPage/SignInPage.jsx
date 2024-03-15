@@ -17,7 +17,7 @@ export const SignInPage = () => {
       if (!isSigningIn) {
         setIsSigningIn(true);
         await doSignInUserWithEmailAndPassword(email, password);
-        navigate("/");
+        navigate("/home");
         window.location.reload();
       }
     } catch (error) {
