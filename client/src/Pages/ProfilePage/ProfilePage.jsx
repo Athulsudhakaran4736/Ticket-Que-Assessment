@@ -10,7 +10,7 @@ export const ProfilePage = () => {
   const navigate = useNavigate();
 
   const onSubmit = () => {
-    navigate("/");
+    navigate("/home");
   };
   return (
     <>
