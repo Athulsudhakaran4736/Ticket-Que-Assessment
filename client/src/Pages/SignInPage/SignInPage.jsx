@@ -75,7 +75,7 @@ export const SignInPage = () => {
           </p>
           <div className="flex gap-2">
             <p>Dont have an account?</p>
-            <Link to="/sign-up">
+            <Link to="/">
               <span className="text-blue-600 text-sm font-medium">Sign Up</span>
             </Link>
           </div>
