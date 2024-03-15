@@ -36,7 +36,7 @@ export default function Header() {
             }`}
           >
             {isLoggedIn ? (
-              <Link to="/" className="hover:text-sky-400">
+              <Link to="/home" className="hover:text-sky-400">
                 <li>HOME</li>
               </Link>
             ) : (

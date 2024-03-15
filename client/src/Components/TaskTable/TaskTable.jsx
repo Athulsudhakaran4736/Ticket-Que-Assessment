@@ -40,8 +40,8 @@ export default function TaskTable() {
           if (data !== null) {
             Object.values(data).map((item) =>
               setData((oldArray) => [...oldArray, item]),
-              setIsLoading(false)
             );
+            setIsLoading(false);
           }
         });
       } catch (error) {
@@ -206,27 +206,22 @@ export default function TaskTable() {
                     setUpdateVisible={setUpdateVisible}
                   />
                 </td>
-                {!currentItems.length && (
-                   <tr>
-                   <td
-                     className="text-center py-4"
-                     colSpan="6"
-                     style={{
-                       color: "#485A6C",
-                       fontStyle: "italic",
-                     }}
-                   >
-                     No Tasks Found....
-                   </td>
-                 </tr>
-                )}
               </tr>
               
             ))
           ) : (
-            <div className="absolute flex justify-center w-full">
-             <ReactLoading type={'spin'} color={'#f16521'} height={40} width={40} />
-             </div>
+            <tr>
+            <td
+              className="text-center py-4"
+              colSpan="6"
+              style={{
+                color: "#485A6C",
+                fontStyle: "italic",
+              }}
+            >
+              No Tasks Found....
+            </td>
+          </tr>
           )}
         </tbody>
       </table>

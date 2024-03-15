@@ -3,13 +3,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { doSignInUserWithEmailAndPassword } from "../../firebase/auth";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import { toast } from "react-hot-toast";
 
 export const SignInPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e) => {
     try {
@@ -21,10 +21,10 @@ export const SignInPage = () => {
         window.location.reload();
       }
     } catch (error) {
-      setErrorMessage(error);
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 3000);
+      toast.error("User credentials are wrong");
+      setPassword("");
+      setEmail("");
+      setIsSigningIn(false);
     }
   };
   return (
@@ -70,9 +70,6 @@ export const SignInPage = () => {
           >
             Sign In
           </button>
-          <p className=" text-red-600">
-            {errorMessage ? "User credentials are wrong !!!" : ""}
-          </p>
           <div className="flex gap-2">
             <p>Dont have an account?</p>
             <Link to="/">

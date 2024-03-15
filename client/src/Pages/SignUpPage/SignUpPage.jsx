@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
 import { Input } from "antd";
+import { toast } from "react-hot-toast";
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -9,35 +10,24 @@ export const SignUpPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSignUp, setIsSignUp] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name.length < 5) {
-      setErrorMessage("Name should be atleast 5 character long");
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+      toast.error("Name should be atleast 5 character long");
       return;
     }
     const emailRegex =
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if (!emailRegex.test(email)) {
-      setErrorMessage("Invalid email format");
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+      toast.error("Invalid email format");
       return;
     }
     const passwordRegex =
       /^(?=.*[a-zA-Z\d])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!passwordRegex.test(password)) {
-      setErrorMessage(
-        "Password should be at least 8 characters long and include numbers, letters, and symbols.",
-      );
-      setTimeout(() => {
-        setErrorMessage("");
-      }, 2000);
+      toast.error("Password should be at least 8 characters long and include numbers, letters, and symbols.")
       return;
     }
     if (!isSignUp) {
@@ -46,10 +36,11 @@ export const SignUpPage = () => {
         await doCreateUserWithEmailAndPassword(name, email, password);
         navigate("/sign-in");
       } catch (error) {
-        setErrorMessage("Email already in use");
-        setTimeout(() => {
-          setErrorMessage("");
-        }, 2000);
+        toast.error("Email already in use");
+        setIsSignUp(false);
+        setName("");
+        setEmail("");
+        setPassword("");
       }
     }
   };
@@ -101,7 +92,6 @@ export const SignUpPage = () => {
           >
             Sign Up
           </button>
-          <p className="text-red-600">{errorMessage ? errorMessage : ""}</p>
           <div className="flex gap-2">
             <p>Have an account?</p>
             <Link to="/sign-in">
