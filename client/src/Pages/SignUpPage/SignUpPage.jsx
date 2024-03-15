@@ -41,9 +41,16 @@ export const SignUpPage = () => {
       return;
     }
     if (!isSignUp) {
-      setIsSignUp(true);
-      await doCreateUserWithEmailAndPassword(name, email, password);
-      navigate("/sign-in");
+      try {
+        setIsSignUp(true);
+        await doCreateUserWithEmailAndPassword(name, email, password);
+        navigate("/sign-in");
+      } catch (error) {
+        setErrorMessage("Email already in use");
+        setTimeout(() => {
+          setErrorMessage("");
+        }, 2000);
+      }
     }
   };
   return (
