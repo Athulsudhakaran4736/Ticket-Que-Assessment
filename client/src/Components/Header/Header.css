@@ -1,0 +1,25 @@
+.hamburger-icon {
+  display: none;
+}
+
+.nav-side.visible {
+  display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    position: relative;
+  }
+  .nav-side {
+    position: absolute;
+    top: 80px; /* Adjust as needed */
+    left: 0;
+    background-color: #b6bbc4; /* Adjust background color */
+    padding: 10px;
+    width: 100%;
+  }
+
+  .hamburger-icon {
+    display: block;
+  }
+}
