@@ -35,13 +35,11 @@ export default function Header() {
               menuVisible ? "visible" : "hidden"
             }`}
           >
-            {isLoggedIn ? (
+        
               <Link to="/home" className="hover:text-sky-400">
                 <li>HOME</li>
               </Link>
-            ) : (
-              ""
-            )}
+          
             <Link to="/profile">
               <li className="hover:text-sky-400">PROFILE</li>
             </Link>

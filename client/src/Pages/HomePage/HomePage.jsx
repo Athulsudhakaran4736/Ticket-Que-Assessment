@@ -15,6 +15,7 @@ export const HomePage = () => {
   const [name, setName] = useState("");
   const [priority, setPriority] = useState("");
   const [status, setStatus] = useState("");
+  const [searchTasks, setSearchTasks] = useState("");
 
   let date = new Date();
   let day = date.getDate();
@@ -34,6 +35,7 @@ export const HomePage = () => {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
 
   const onFinish = async (values) => {
     const { name, priority, status } = values;
@@ -63,10 +65,15 @@ export const HomePage = () => {
         <div className="border border-gray-300 rounded-lg w-full flex flex-col min-h-0 p-5">
           <div className="flex justify-between">
             <div className="font-semibold text-xl">Tasks</div>
-            <div>
+            <div className="flex gap-3">
+              <div>
               <Button onClick={showModal} size="large">
                 Create Task
               </Button>
+              </div>
+              <div>
+                <Input size="large" placeholder="Search Tasks" onChange={(e) => setSearchTasks(e.target.value)} allowClear/>
+              </div>
               <Modal
                 title="Create Task"
                 open={isModalVisible}
@@ -125,9 +132,7 @@ export const HomePage = () => {
             </div>
           </div>
           <TaskTable
-            defaultName={name}
-            defaultStatus={status}
-            defaultPriority={priority}
+            searchTasks={searchTasks}
           />
         </div>
       </div>

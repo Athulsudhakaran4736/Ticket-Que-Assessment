@@ -6,7 +6,7 @@ import { onValue, ref, remove } from "firebase/database";
 import { db } from "../../firebase/firebase";
 import ReactLoading from 'react-loading';
 
-export default function TaskTable() {
+export default function TaskTable({searchTasks}) {
   const [data, setData] = useState([]);
   const [updateVisible, setUpdateVisible] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
@@ -51,11 +51,14 @@ export default function TaskTable() {
     fetchData();
   }, []);
 
+  const filteredData = data.filter((item)=>item.values.name.toLowerCase().includes(searchTasks.toLowerCase()));
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
 
   return (
     <div className="relative overflow-x-auto sm:rounded-lg mt-5 overflow-hidden">
