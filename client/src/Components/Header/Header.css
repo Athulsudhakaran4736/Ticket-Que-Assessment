@@ -7,6 +7,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .nav-side-wrapper {
+    display: none;
+  }
   .main-container {
     position: relative;
   }

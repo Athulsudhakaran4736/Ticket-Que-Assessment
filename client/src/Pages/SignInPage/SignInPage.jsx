@@ -4,6 +4,7 @@ import { doSignInUserWithEmailAndPassword } from "../../firebase/auth";
 import { Input } from "antd";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { toast } from "react-hot-toast";
+import "./SigninPage.css"
 
 export const SignInPage = () => {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export const SignInPage = () => {
   };
   return (
     <div
-      className="flex justify-center items-center"
+      className="flex justify-center items-center signin-container"
       style={{ height: "100vh" }}
     >
       <div
@@ -70,7 +71,7 @@ export const SignInPage = () => {
           >
             Sign In
           </button>
-          <div className="flex gap-2">
+          <div className="flex gap-2 account-wrapper">
             <p>Dont have an account?</p>
             <Link to="/">
               <span className="text-blue-600 text-sm font-medium">Sign Up</span>

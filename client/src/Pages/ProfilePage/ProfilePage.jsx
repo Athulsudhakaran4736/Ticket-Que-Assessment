@@ -4,6 +4,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { useAuth } from "../../contexts/authContext";
 import { useNavigate } from "react-router-dom";
 import Header from "../../Components/Header/Header";
+import "./ProfilePage.css"
 
 export const ProfilePage = () => {
   const { currentUser } = useAuth();
@@ -16,7 +17,7 @@ export const ProfilePage = () => {
     <>
       <Header />
       <div
-        className="flex justify-center items-center"
+        className="flex justify-center items-center profile-container"
         style={{ height: "100vh" }}
       >
         <div

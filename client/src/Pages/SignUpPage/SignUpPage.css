@@ -1,0 +1,14 @@
+@media only screen and (max-width: 600px) {
+    .signup-wrapper{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: auto;
+        padding: 20px;
+    }
+    .account-wrapper{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+  }

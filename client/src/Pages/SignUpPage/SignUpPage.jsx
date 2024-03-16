@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { doCreateUserWithEmailAndPassword } from "../../firebase/auth";
 import { Input } from "antd";
 import { toast } from "react-hot-toast";
+import "./SignUpPage.css"
 
 export const SignUpPage = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ export const SignUpPage = () => {
   };
   return (
     <div
-      className="flex justify-center items-center"
+      className="flex justify-center items-center signup-wrapper"
       style={{ height: "100vh" }}
     >
       <div
@@ -92,7 +93,7 @@ export const SignUpPage = () => {
           >
             Sign Up
           </button>
-          <div className="flex gap-2">
+          <div className="flex gap-2 account-wrapper">
             <p>Have an account?</p>
             <Link to="/sign-in">
               <span className="text-blue-600 text-sm font-medium">Sign In</span>

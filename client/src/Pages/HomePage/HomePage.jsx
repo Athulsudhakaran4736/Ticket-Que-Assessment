@@ -8,6 +8,7 @@ import { db } from "../../firebase/firebase";
 import { ref, set } from "firebase/database";
 import { Option } from "antd/es/mentions";
 import { toast } from "react-hot-toast";
+import "./HomePage.css"
 
 export const HomePage = () => {
   const { isLoggedIn } = useAuth();
@@ -63,9 +64,9 @@ export const HomePage = () => {
       <Header />
       <div className="flex justify-center items-center  m-10">
         <div className="border border-gray-300 rounded-lg w-full flex flex-col min-h-0 p-5">
-          <div className="flex justify-between">
+          <div className="flex justify-between tasks-container">
             <div className="font-semibold text-xl">Tasks</div>
-            <div className="flex gap-3">
+            <div className="flex gap-3 task-head-wrapper">
               <div>
               <Button onClick={showModal} size="large">
                 Create Task

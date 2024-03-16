@@ -1,0 +1,11 @@
+@media only screen and (max-width: 600px) {
+    .tasks-container{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .task-head-wrapper{
+        display: flex;
+        flex-direction: column;
+    }
+  }

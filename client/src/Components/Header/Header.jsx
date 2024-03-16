@@ -8,7 +8,7 @@ import "./Header.css";
 export default function Header() {
   const navigate = useNavigate();
   const { isLoggedIn } = useAuth();
-  const [menuVisible, setMenuVisible] = useState(true);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   const handleChange = async (e) => {
     e.preventDefault();
@@ -29,17 +29,28 @@ export default function Header() {
           color="white"
           onClick={() => setMenuVisible(!menuVisible)}
         />
+        <ul className={`flex gap-16 text-gray-100 nav-side-wrapper`}>
+          <Link to="/home" className="hover:text-sky-400">
+            <li>HOME</li>
+          </Link>
+
+          <Link to="/profile">
+            <li className="hover:text-sky-400">PROFILE</li>
+          </Link>
+          <Link to="/sign-in" onClick={handleChange}>
+            <li className="hover:text-sky-400">SIGN OUT</li>
+          </Link>
+        </ul>
         {menuVisible && (
           <ul
             className={`flex gap-16 text-gray-100 nav-side ${
               menuVisible ? "visible" : "hidden"
             }`}
           >
-        
-              <Link to="/home" className="hover:text-sky-400">
-                <li>HOME</li>
-              </Link>
-          
+            <Link to="/home" className="hover:text-sky-400">
+              <li>HOME</li>
+            </Link>
+
             <Link to="/profile">
               <li className="hover:text-sky-400">PROFILE</li>
             </Link>

@@ -4,7 +4,6 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import TaskUpdateModal from "../TaskUpdateModal/TaskUpdateModal";
 import { onValue, ref, remove } from "firebase/database";
 import { db } from "../../firebase/firebase";
-import ReactLoading from 'react-loading';
 
 export default function TaskTable({searchTasks}) {
   const [data, setData] = useState([]);
@@ -62,7 +61,7 @@ export default function TaskTable({searchTasks}) {
 
   return (
     <div className="relative overflow-x-auto sm:rounded-lg mt-5 overflow-hidden">
-      <table className="w-full ">
+      <table className="w-full">
         <thead
           className=" text-sm uppercase font-extrabold border-b"
           style={{
